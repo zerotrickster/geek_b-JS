@@ -11,7 +11,12 @@ function calcMult (a, b) {
 }
 
 function calcDiv (a, b) {
-	return a / b;
+	if (!b == 0) {
+		return a / b;
+	} else {
+		alert ("error: b must be nonzero");
+	}
+	
 }
 
 function mathOperation (arg1, arg2, operation) {
@@ -33,3 +38,5 @@ function mathOperation (arg1, arg2, operation) {
 		break;
 	}
 }
+
+mathOperation (3, 0, Division);
