@@ -1,0 +1,32 @@
+<script>
+var cart = [
+
+    {  title: "product1",
+       price: 100,
+       count: 4
+  },
+
+    {  title: "product1",
+       price: 250,
+       count: 3
+  },
+
+    {  title: "product1",
+       price: 500,
+       count: 2
+  }
+
+];
+
+function calcTotalPrice() {
+
+	var totalPrice = 0;
+	for (var i = 0; i < cart.length; i++ ) {
+	totalPrice = totalPrice + (cart[i].price * cart[i].count);
+	}
+
+	return totalPrice;
+}
+
+alert( calcTotalPrice(cart) );	
+</script>

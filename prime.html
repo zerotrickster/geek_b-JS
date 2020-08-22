@@ -1,0 +1,21 @@
+ <script>
+ var prime = 1;
+
+    while (prime <= 100) {
+        if (prime == 1) {
+            alert(prime);
+        } else {
+            var result = 2;
+            var i = 2;
+            while (prime % i !== 0 ) {
+                i ++;
+                result ++;
+                } 
+            if (result == prime) {
+                alert(result);
+            }
+        }
+        prime ++;
+    }
+    
+</script>
