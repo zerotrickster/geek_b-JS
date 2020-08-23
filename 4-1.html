@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+    <script>
+	var numbersObject = {};
+	var number = prompt ("Введите число от 0 до 999", "");
+	if ( isNaN(number) || number > 999 || number < 0 ) {
+		alert( "Некорректное значение");
+	} else if (number <= 9) {
+		numbersObject.units = +number;
+	} else if (number >= 10 && number <= 99) {
+		numbersObject.units = +( number.substr(-1, 1) );
+	    numbersObject.tens = +( number.substr(-2, 1) );
+
+    }  else {
+
+	   numbersObject.units = +( number.substr(-1, 1) );
+	   numbersObject.tens = +( number.substr(-2, 1) );
+	   numbersObject.hundreds = +( number.substr(-3, 1) );
+    }
+
+    console.log(numbersObject);
+</script>
+
+	
+</body>
+</html>
