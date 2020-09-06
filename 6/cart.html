@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Document</title>
+</head>
+<body>
+
+    <section id="catalog" class = "catalog">
+            
+    </section>
+    <section class="cart">
+        <span>корзина</span>
+        <div id = "cart"></div>
+    </section>
+
+      
+<script type="text/javascript">
+        let cart = {
+                "fdfsdsdd" : {
+                        "name" : "лампа",
+                        "count": 0,
+                        "price" : 120,
+                        "img" : "small/product-1.jpg",
+                },
+                "iewiweuw" : {
+                        "name" : "кресло",
+                        "count": 0,
+                        "price" : 500,
+                        "img" : "small/product-2.jpg",
+                },
+        };
+        var out = "";
+        for (var key in cart) {
+                out += '<div class="catalog-item">'
+                out += '<img src="' + cart[key].img + '">' + '<br>';
+                out += cart[key].name + '<br>';
+                out += 'цена: ' + cart[key].price + '<br>';
+                out += '<button class = "plus" data-id ="' + key + '" >добавить в корзину</button>';
+                //out +=  '<button class = "minus" data-id ="' + key + '" >-</button>' + '<br>';
+                out += '</div>'
+
+        }
+
+        document.getElementById('catalog').innerHTML = out;
+
+        document.onclick = event => {
+                if (event.target.classList.contains("plus")) {
+                        plusFunction(event.target.dataset.id);
+                }
+                if (event.target.classList.contains("minus")) {
+                        minusFunction(event.target.dataset.id);
+                }
+        }
+
+        const plusFunction = id => {
+                cart[id]["count"]++; 
+                renderCart ();
+        }
+
+
+        const minusFunction = id => {
+                if (cart[id]["count"] - 1 == 0) {
+                        deleteFunction(id);
+                        return true;
+                }
+                cart[id]["count"]--;
+                renderCart ();
+        }
+
+        const deleteFunction = id => {
+                delete cart[id];
+                renderCart();
+
+        }
+
+        const renderCart = () => {
+             console.log(cart);
+             var cartOut = "";
+             for (var key in cart) {
+                if( cart[key].count == 0) {
+                    continue;    
+                }
+                cartOut += cart[key].name + '<br>';
+                cartOut += 'количество: ' +cart[key].count + '<br>';
+                cartOut += 'цена: ' + cart[key].price + '<br>';
+                cartOut += 'цена за ' + cart[key].count + 'шт.: ' + (cart[key].price * cart[key].count)+ '<br>';
+                cartOut += '<button class = "plus" data-id ="' + key + '" >добавить</button>';
+                cartOut +=  '<button class = "minus" data-id ="' + key + '" >убрать</button>' + '<br>'+ '<hr>';
+                document.getElementById('cart').innerHTML = cartOut;        }
+                totalPrice();
+
+
+            
+        } 
+
+        const totalPrice = () => {
+                var total = 0;
+                var sum = 0;
+                for (var key in cart) {
+                        total += cart[key].price * cart[key].count;
+                        }
+                        sum += total;
+                        var totalcart = document.getElementById('cart');
+                        totalcart.insertAdjacentHTML('beforeend',"Итого:" + sum);
+
+
+        }
+        
+
+
+</script>
+
+</body>
+</html>
+
+
