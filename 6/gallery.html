@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+    <img class="image" src="small\product-1.jpg">
+    <img class="image" src="small\product-2.jpg">
+    <img class="image" src="small\product-3.jpg">
+    <div id="bimg"></div>
+	<script >
+
+        function changePic(event) {
+                var bigDiv = document.getElementById('bimg');
+                bigDiv.innerHTML = ''; 
+                var smallSrc = event.target.getAttribute('src'); 
+                var newImg = document.createElement('img'); 
+                newImg.src = smallSrc.replace('small', 'big'); 
+                bigDiv.append(newImg); 
+                newImg.onerror = function() {
+                    bigDiv.innerHTML = '<h1>фото не найдено</h1>';
+                }
+
+            }
+
+
+            var img = document.getElementsByClassName('image');
+            for (var i = 0; i < img.length; i++) {
+                img[i].onclick = changePic;
+                }
+
+
+       
+               
+     
+
+	</script>
+</body>
+</html>
